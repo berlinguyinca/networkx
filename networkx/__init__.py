@@ -93,7 +93,14 @@ from networkx.algorithms import *
 import networkx.linalg
 
 from networkx.linalg import *
-from networkx.tests.test import run as test
+
+# uggly hack due to tests being excluded in AWS lambda
+try:
+    __import__('networkx').find_module('tests')
+    # Make things with supposed existing module
+    from networkx.tests.test import run as test
+except ImportError:
+    pass
 
 import networkx.drawing
 from networkx.drawing import *
