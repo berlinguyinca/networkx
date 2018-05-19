@@ -96,7 +96,6 @@ from networkx.linalg import *
 
 # uggly hack due to tests being excluded in AWS lambda
 try:
-    __import__('networkx').find_module('tests')
     # Make things with supposed existing module
     from networkx.tests.test import run as test
 except ImportError:
